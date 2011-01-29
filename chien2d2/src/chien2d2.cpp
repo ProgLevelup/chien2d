@@ -284,6 +284,7 @@ bool C2D2_ColidiuSprites(unsigned int id1, unsigned int indice1, int x1, int y1,
 	{
 		// Senão é o contrário
 		if(-offx > sprites[id2-1].spLargura)
+
 			return 0;
 	}
 	// Verifica quem está acima
@@ -661,7 +662,6 @@ bool C2D2_DimensaoFonte(unsigned int idx, int *altura)
 		*altura=fonte->tamanhoFonte;
 		return true;
 	}
-
 	return false;
 }
 
@@ -1447,7 +1447,6 @@ void C2D2_DefineSincronizaUsuario(void (*funcao)())
 //
 //
 //Lists os Joysticks no console
-
 int C2D2_ListaJoysticks()
 {
 	int num = SDL_NumJoysticks();

@@ -29,6 +29,8 @@ extern void (*C2D2P_Linha)(int x1,int y1,int x2,int y2,unsigned char r, unsigned
 extern void (*C2D2P_Retangulo)(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b);
 // Algoritmo para desenhar um retângulo pintado, baseado em duas coordenadas no plano e uma cor em RGB
 extern void (*C2D2P_RetanguloPintado)(int x1,int y1,int x2,int y2, unsigned char r, unsigned char g, unsigned char b);
+// Algoritmo para desenhar um retângulo pintado, baseado em duas coordenadas no plano e uma cor em RGB
+extern void (*C2D2P_RetanguloPintadoAlfa)(int x1,int y1,int x2,int y2, unsigned char r, unsigned char g, unsigned char b, unsigned char alfa);
 // Algoritmo para desenhar um círculo, baseado em uma coordenada no plano, o raio e uma cor em RGB
 extern void (*C2D2P_Circulo)(int x,int y,int raio, unsigned char r, unsigned char g, unsigned char b);
 // Algoritmo para desenhar um círculo pintado, baseado em uma coordenada no plano, o raio e uma cor em RGB

@@ -85,6 +85,13 @@ void (*C2D2P_Retangulo)(int x1,int y1,int x2,int y2,unsigned char r, unsigned ch
 //
 void (*C2D2P_RetanguloPintado)(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b);
 
+// Algoritmo para desenhar um retângulo pintado, baseado em duas coordenadas no plano e uma cor em RGB
+//
+// Data: 29/01/2011
+//
+void (*C2D2P_RetanguloPintadoAlfa)(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b, unsigned char alfa);
+
+
 // Algoritmo para desenhar um círculo, baseado em uma coordenada no plano, o raio e uma cor em RGB
 // Usa o algoritmo do ponto médio
 //

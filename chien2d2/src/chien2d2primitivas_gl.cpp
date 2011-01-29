@@ -74,6 +74,7 @@ bool C2D2PGL_Inicia()
 	C2D2P_Linha =  &C2D2PGL_Linha;
 	C2D2P_Retangulo = &C2D2PGL_Retangulo;
 	C2D2P_RetanguloPintado = &C2D2PGL_RetanguloPintado;
+	C2D2P_RetanguloPintadoAlfa = &C2D2PGL_RetanguloPintadoAlfa;
 	C2D2P_Circulo = &C2D2PGL_Circulo;
 	C2D2P_CirculoPintado = &C2D2PGL_CirculoPintado;
 	C2D2P_Elipse = &C2D2PGL_Elipse;
@@ -148,6 +149,24 @@ void C2D2PGL_RetanguloPintado(int x1,int y1,int x2,int y2,unsigned char r, unsig
 	glEnd();
 
 }
+
+// Algoritmo para desenhar um retângulo pintado, baseado em duas coordenadas no plano, uma cor em RGB e o valor de alfa
+//
+// Data: 29/01/2011
+//
+void C2D2PGL_RetanguloPintadoAlfa(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b, unsigned char alfa)
+{
+	setaTexturizacao(false);
+	glColor4ub(r, g, b, alfa);
+	glBegin(GL_QUADS);
+		glVertex2i((GLint)x1,(GLint)y1);
+		glVertex2i((GLint)x2,(GLint)y1);
+		glVertex2i((GLint)x2,(GLint)y2);
+		glVertex2i((GLint)x1,(GLint)y2);
+	glEnd();
+
+}
+
 
 // Algoritmo para desenhar um círculo, baseado em uma coordenada no plano, o raio e uma cor em RGB
 // Usa o algoritmo do ponto médio

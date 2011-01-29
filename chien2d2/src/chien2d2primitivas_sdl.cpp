@@ -79,6 +79,7 @@ bool C2D2PSDL_Inicia()
 	C2D2P_Linha =  &C2D2PSDL_Linha;
 	C2D2P_Retangulo = &C2D2PSDL_Retangulo;
 	C2D2P_RetanguloPintado = &C2D2PSDL_RetanguloPintado;
+	C2D2P_RetanguloPintadoAlfa = &C2D2PSDL_RetanguloPintadoAlfa;
 	C2D2P_Circulo = &C2D2PSDL_Circulo;
 	C2D2P_CirculoPintado = &C2D2PSDL_CirculoPintado;
 	C2D2P_Elipse = &C2D2PSDL_Elipse;
@@ -302,6 +303,14 @@ void C2D2PSDL_RetanguloPintado(int x1,int y1,int x2,int y2,unsigned char r, unsi
 	Uint32 cor = SDL_MapRGB(screen->format, r, g, b);
 	// Pinta
 	SDL_FillRect(screen, &area, cor);
+}
+
+// Algoritmo dummy para desenhar um retângulo pintado, baseado em duas coordenadas no plano e uma cor em RGB e canal de alfa
+//
+// Data: 29/01/2011
+//
+void C2D2PSDL_RetanguloPintadoAlfa(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b, unsigned char alfa)
+{
 }
 
 // Algoritmo para desenhar um círculo, baseado em uma coordenada no plano, o raio e uma cor em RGB
