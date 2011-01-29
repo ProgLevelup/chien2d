@@ -45,7 +45,7 @@ Copyright 2008-2010, Paulo Vinicius Wolski Radtke (pvwradtke@gmail.com)
 // O número máximo de temporizadores
 #define ATOR_MAX_TEMPORIZADORES	8
 // O número máximo de variáveis autilizares
-#define ATOR_MAX_AUX			8
+#define ATOR_MAX_AUX			10
 
 // Enumeração para estados do ator
 enum {ATOR_NASCENDO, ATOR_MORTO, ATOR_ENCERRADO, ATOR_PROG_INI};

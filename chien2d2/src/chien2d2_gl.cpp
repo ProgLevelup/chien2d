@@ -205,6 +205,7 @@ bool C2D2GL_Inicia(unsigned int largura, unsigned int altura,
 	C2D2_RemoveSpriteSet=&C2D2GL_RemoveSpriteSet;
 	C2D2_DesenhaSprite=&C2D2GL_DesenhaSprite;
 	C2D2_DesenhaSpriteEfeito=&C2D2GL_DesenhaSpriteEfeito;
+	C2D2_DesenhaSpriteCentro=&C2D2GL_DesenhaSpriteCentro;
 
     // Indica que foi iniciado e pula fora
     inicializado=true;
@@ -706,6 +707,19 @@ bool C2D2GL_DesenhaSprite(unsigned int id, unsigned int indice, int x, int y)
 	return true;
 }
 
+static int ValidaSprite(unsigned int id, unsigned int indice)
+{
+	// O id é válido?
+	if(id == 0)
+		return -1;
+	int idx = id-1;
+	// O índice é válido?
+	if(indice >= (unsigned int)(sprites[idx].matrizX * sprites[idx].matrizY) || sprites[idx].textura==0)
+		return -1;
+
+	return idx;
+}
+
 // Função para desenhar um sprite
 //
 // Data: 13/04/2007
@@ -713,12 +727,10 @@ bool C2D2GL_DesenhaSprite(unsigned int id, unsigned int indice, int x, int y)
 bool C2D2GL_DesenhaSpriteEfeito(unsigned int id, unsigned int indice, int x[4], int y[4], Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
 	// O id é válido?
-	if(id == 0)
+	int idx = ValidaSprite(id, indice);
+	if(idx < 0)
 		return false;
-	int idx = id-1;
-	// O índice é válido?
-	if(indice >= (unsigned int)(sprites[idx].matrizX * sprites[idx].matrizY) || sprites[idx].textura==0)
-		return false;
+	
 	// Tudo certo, calcula as coordenadas iniciais a desenhar na textura:
 	int xImg = (indice%sprites[idx].matrizX)*sprites[idx].spLargura;
 	int yImg = (indice/sprites[idx].matrizX)*sprites[idx].spAltura;
@@ -758,6 +770,23 @@ bool C2D2GL_DesenhaSpriteEfeito(unsigned int id, unsigned int indice, int x[4], 
     glEnd();
 
 	return true;
+}
+
+bool C2D2GL_DesenhaSpriteCentro(unsigned int id, unsigned int indice, double xcentro, double ycentro, int largura, int altura)
+{
+	int x[4];
+	int y[4];
+
+	double offsetx = xcentro - (largura  / 2);
+	double offsety = ycentro - (altura / 2);
+
+	x[0] = x[3] = (int)offsetx;
+	x[1] = x[2] = (int)(offsetx + largura);
+
+	y[0] = y[1] = (int)offsety;
+	y[2] = y[3] = (int)(offsety + altura);
+
+	return C2D2GL_DesenhaSpriteEfeito(id, indice, x, y, 255, 255, 255, 255);
 }
 
 
