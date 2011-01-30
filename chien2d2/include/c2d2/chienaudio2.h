@@ -94,8 +94,12 @@ void CA2_RemoveEfeito(unsigned int id);
 unsigned int CA2_ProcuraEfeito(const char *apelido);
 // Função para tocar um efeito
 int CA2_TocaEfeito(unsigned int id, int posicao);
+// Função para tocar um efeito em loop
+int CA2_TocaEfeitoLoop(unsigned int id, int posicao, int loop);
 // Função para tocar um efeito posicional baseado na coordenada x na tela
 int CA2_TocaEfeitoTela(unsigned int id, int posicao);
+// Função para cortar o efeito tocando em um canal
+int CA2_CortaEfeito(int canal, int tempo);
 // Função para pausar a reprodução de efeitos sonoros
 void CA2_PausaEfeitos();
 // Função para continuar a reprodução de efeitos sonoros (após pausa)

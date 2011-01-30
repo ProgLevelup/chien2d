@@ -347,6 +347,9 @@ bool ATOR_ColidiuBlocoCenario(Ator *a, unsigned int idMapa, unsigned int codBloc
 
 // Função para tocar um efeito sonoro de um ator
 void ATOR_TocaEfeito(Ator *a, unsigned int id, int posicao);
+// Função para tocar um efeito sonoro de um ator em loop
+void ATOR_TocaEfeitoLoop(Ator *a, unsigned int id, int posicao, int loop);
+
 // Função para tocar o efeito sonoro de um ator em função de sua posição na tela
 void ATOR_TocaEfeitoTela(Ator *a, unsigned int id, unsigned int mapa);
 

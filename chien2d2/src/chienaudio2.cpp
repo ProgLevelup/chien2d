@@ -308,6 +308,38 @@ int CA2_TocaEfeito(unsigned int id, int posicao)
     return 0;
 }
 
+// Função para tocar um efeito em loop
+//
+// Data: 30/01/2011
+//
+int CA2_TocaEfeitoLoop(unsigned int id, int posicao, int loop)
+{
+    // O efeito é válido?
+	if(id > CA2_MAX_EFEITOS || id == 0)
+        return 0;
+    // Verifica se o efeito existe
+    if(efeitos[id-1].efeito != 0)
+	{
+		// Ajusta o volume, se necessário
+		if(posicao<CA2_ESQUERDA)
+			posicao = CA2_ESQUERDA;
+		else if(posicao>CA2_DIREITA)
+			posicao = CA2_DIREITA;
+		// Calcula o volume para cada canal. Por default, consideramos que ambos estão no máximo
+
+		int esquerda, direita;
+		// 254 é o volume máximo de um canal. Assim, centro indica 127 em CADA canal. Som em um canal só indica 254 apenas em um canal
+		esquerda = ((100-posicao)*254)/200;
+		direita = ((100+posicao)*254)/200;
+        int canal = Mix_PlayChannel(-1,efeitos[id-1].efeito,loop);
+        Mix_SetPanning(canal, esquerda, direita);
+		return canal;
+	}
+    return 0;
+
+}
+
+
 // Função para tocar um efeito posicional baseado na coordenada x na tela
 
 // Se funcionar, retorna o canal em que o som está tocando. Caso contrário, retorna 0
@@ -339,6 +371,15 @@ int CA2_TocaEfeitoTela(unsigned int id, int posicao)
 		return canal;	
 	}
 	return 0;
+}
+
+// Função para cortar o efeito tocando em um canal
+//
+// Data: 30/01/2011
+//
+int CA2_CortaEfeito(int canal, int tempo)
+{
+	Mix_FadeOutChannel(canal, tempo);
 }
 
 

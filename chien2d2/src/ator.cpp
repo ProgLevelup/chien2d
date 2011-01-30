@@ -723,6 +723,20 @@ void ATOR_TocaEfeito(Ator *a, unsigned int id, int posicao)
 				CA2_TocaEfeito(vetorAtores[a->tipo].sons[id], posicao);
 }
 
+// Função para tocar um efeito sonoro de um ator em loop
+//
+// Data: 30/01/2010
+//
+void ATOR_TocaEfeitoLoop(Ator *a, unsigned int id, int posicao, int loop)
+{
+	// Verifica se o ator e o áudio existem
+	if(vetorAtores[a->tipo].spriteset)
+		if(id < vetorAtores[a->tipo].numSons)
+			if(vetorAtores[a->tipo].sons[id])
+				CA2_TocaEfeitoLoop(vetorAtores[a->tipo].sons[id], posicao, loop);
+}
+
+
 // Função para tocar o efeito sonoro de um ator em função de sua posição na tela
 void ATOR_TocaEfeitoTela(Ator *a, unsigned int id, unsigned int mapa)
 {
