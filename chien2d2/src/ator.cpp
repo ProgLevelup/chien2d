@@ -714,31 +714,33 @@ bool ATOR_ColidiuBlocoCenario(Ator *a, unsigned int idMapa, unsigned int codBloc
 }
 
 // Função para tocar um efeito sonoro de um ator
-void ATOR_TocaEfeito(Ator *a, unsigned int id, int posicao)
+int ATOR_TocaEfeito(Ator *a, unsigned int id, int posicao)
 {
 	// Verifica se o ator e o áudio existem
 	if(vetorAtores[a->tipo].spriteset)
 		if(id < vetorAtores[a->tipo].numSons)
 			if(vetorAtores[a->tipo].sons[id])
-				CA2_TocaEfeito(vetorAtores[a->tipo].sons[id], posicao);
+				return CA2_TocaEfeito(vetorAtores[a->tipo].sons[id], posicao);
+	return -1;
 }
 
 // Função para tocar um efeito sonoro de um ator em loop
 //
 // Data: 30/01/2010
 //
-void ATOR_TocaEfeitoLoop(Ator *a, unsigned int id, int posicao, int loop)
+int ATOR_TocaEfeitoLoop(Ator *a, unsigned int id, int posicao, int loop)
 {
 	// Verifica se o ator e o áudio existem
 	if(vetorAtores[a->tipo].spriteset)
 		if(id < vetorAtores[a->tipo].numSons)
 			if(vetorAtores[a->tipo].sons[id])
-				CA2_TocaEfeitoLoop(vetorAtores[a->tipo].sons[id], posicao, loop);
+				return CA2_TocaEfeitoLoop(vetorAtores[a->tipo].sons[id], posicao, loop);
+	return -1;
 }
 
 
 // Função para tocar o efeito sonoro de um ator em função de sua posição na tela
-void ATOR_TocaEfeitoTela(Ator *a, unsigned int id, unsigned int mapa)
+int ATOR_TocaEfeitoTela(Ator *a, unsigned int id, unsigned int mapa)
 {
 	int xref=0, yref=0;
 	if(mapa!=0)
@@ -747,7 +749,8 @@ void ATOR_TocaEfeitoTela(Ator *a, unsigned int id, unsigned int mapa)
 	if(vetorAtores[a->tipo].spriteset)
 		if(id < vetorAtores[a->tipo].numSons)
 			if(vetorAtores[a->tipo].sons[id])
-				CA2_TocaEfeitoTela(vetorAtores[a->tipo].sons[id], (int)(a->x-xref));
+				return CA2_TocaEfeitoTela(vetorAtores[a->tipo].sons[id], (int)(a->x-xref));
+	return -1;
 }
 
 // Função para enviar um evento para o jogo. Retorna verdadeiro se conseguiu enviar o

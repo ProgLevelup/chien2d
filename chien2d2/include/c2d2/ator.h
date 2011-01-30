@@ -346,12 +346,12 @@ bool ATOR_ColidiuAtores(Ator *a, Ator *b);
 bool ATOR_ColidiuBlocoCenario(Ator *a, unsigned int idMapa, unsigned int codBloco);
 
 // Função para tocar um efeito sonoro de um ator
-void ATOR_TocaEfeito(Ator *a, unsigned int id, int posicao);
+int ATOR_TocaEfeito(Ator *a, unsigned int id, int posicao);
 // Função para tocar um efeito sonoro de um ator em loop
-void ATOR_TocaEfeitoLoop(Ator *a, unsigned int id, int posicao, int loop);
+int ATOR_TocaEfeitoLoop(Ator *a, unsigned int id, int posicao, int loop);
 
 // Função para tocar o efeito sonoro de um ator em função de sua posição na tela
-void ATOR_TocaEfeitoTela(Ator *a, unsigned int id, unsigned int mapa);
+int ATOR_TocaEfeitoTela(Ator *a, unsigned int id, unsigned int mapa);
 
 // Função para enviar um evento para o jogo. Retorna verdadeiro se conseguiu enviar o
 // evento. Falso caso contrário
