@@ -206,6 +206,7 @@ bool C2D2GL_Inicia(unsigned int largura, unsigned int altura,
 	C2D2_DesenhaSprite=&C2D2GL_DesenhaSprite;
 	C2D2_DesenhaSpriteEfeito=&C2D2GL_DesenhaSpriteEfeito;
 	C2D2_DesenhaSpriteCentro=&C2D2GL_DesenhaSpriteCentro;
+	C2D2_DesenhaSpriteCentroAlfa=&C2D2GL_DesenhaSpriteCentroAlfa;
 
     // Indica que foi iniciado e pula fora
     inicializado=true;
@@ -774,6 +775,11 @@ bool C2D2GL_DesenhaSpriteEfeito(unsigned int id, unsigned int indice, int x[4], 
 
 bool C2D2GL_DesenhaSpriteCentro(unsigned int id, unsigned int indice, double xcentro, double ycentro, int largura, int altura)
 {
+	return C2D2GL_DesenhaSpriteCentroAlfa(id, indice, xcentro, ycentro, largura, altura, 255, 255, 255, 255);	
+}
+
+bool C2D2GL_DesenhaSpriteCentroAlfa(unsigned int id, unsigned int indice, double xcentro, double ycentro, int largura, int altura, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+{
 	int x[4];
 	int y[4];
 
@@ -786,7 +792,7 @@ bool C2D2GL_DesenhaSpriteCentro(unsigned int id, unsigned int indice, double xce
 	y[0] = y[1] = (int)offsety;
 	y[2] = y[3] = (int)(offsety + altura);
 
-	return C2D2GL_DesenhaSpriteEfeito(id, indice, x, y, 255, 255, 255, 255);
+	return C2D2GL_DesenhaSpriteEfeito(id, indice, x, y, r, g, b, a);
 }
 
 

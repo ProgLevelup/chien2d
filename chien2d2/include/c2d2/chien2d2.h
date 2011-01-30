@@ -249,6 +249,7 @@ extern bool (*C2D2_DesenhaSprite)(unsigned int identificador, unsigned int indic
 extern bool (*C2D2_DesenhaSpriteEfeito)(unsigned int identificador, unsigned int indice, int x[4], int y[4], Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 //Desenha um sprite centralizado nas coordenadas xcentro e ycentro, com dimensoes largura e altura
 extern bool (*C2D2_DesenhaSpriteCentro)(unsigned int id, unsigned int indice, double xcentro, double ycentro, int largura, int altura);
+extern bool (*C2D2_DesenhaSpriteCentroAlfa)(unsigned int id, unsigned int indice, double xcentro, double ycentro, int largura, int altura, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
 // Funções comuns de sprites
 // Procura um spriteset pelo nome do arquivo original
