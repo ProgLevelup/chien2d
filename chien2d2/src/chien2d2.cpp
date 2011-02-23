@@ -1502,7 +1502,8 @@ void C2D2_DesligaJoystick(int index)
 	if(joystick->joystick == NULL)
 		return;
 	
-	SDL_JoystickClose(joystick->joystick);
+	SDL_JoystickClose(joystick->joystick);	
+	joystick->joystick = NULL;
 }
 
 C2D2_Joystick *C2D2_PegaJoystick(int index)
