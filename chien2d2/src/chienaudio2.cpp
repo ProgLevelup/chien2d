@@ -379,7 +379,7 @@ int CA2_TocaEfeitoTela(unsigned int id, int posicao)
 //
 int CA2_CortaEfeito(int canal, int tempo)
 {
-	Mix_FadeOutChannel(canal, tempo);
+	return Mix_FadeOutChannel(canal, tempo);
 }
 
 
