@@ -74,7 +74,7 @@ void ProcessaControle(Ator *a)
 int main(int narg, char **valarg)
 {
 	// Inicia a Chien2D 2 e testa se deu tudo certo
-	if(C2D2_Inicia(LARGURA_TELA, ALTURA_TELA, C2D2_TELA_CHEIA, C2D2_DESENHO_OPENGL, "Mapa Top View"))
+	if(C2D2_Inicia(LARGURA_TELA, ALTURA_TELA, C2D2_TELA_CHEIA, C2D2_DESENHO_PADRAO, "Mapa Top View"))
 		printf("Iniciou a Chien2D 2 com sucesso\n");
 	else
 	{
