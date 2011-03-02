@@ -62,3 +62,10 @@ glob:Exemplos/06-baloes/Release/
 glob:Exemplos/07-tilemap/Release/
 glob:Exemplos/08-plataforma/Release/
 glob:Exemplos/Release/
+glob:Exemplos/09-topview/09-topview.vcproj.bcsnote.bcsanches.user
+glob:Exemplos/09-topview/Debug/
+glob:Exemplos/09-topview/Release/
+glob:Exemplos/10-subpixel/10-subpixel.vcproj.bcsnote.bcsanches.user
+glob:Exemplos/10-subpixel/10-subpixel_rotacao.vcproj.bcsnote.bcsanches.user
+glob:Exemplos/10-subpixel/Debug/
+glob:Exemplos/10-subpixel/Release/

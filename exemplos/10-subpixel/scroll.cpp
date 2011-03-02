@@ -57,7 +57,7 @@ int main(int narg, char **valarg)
 		if(teclas[C2D2_ENTER].ativo)
 			x+=5;
 		else
-			x+=0.01;
+			x+=0.01f;
 		// Verifica se deve rebobinar o mapa
 		if(x> 8*510)
 			x-= 8*510;

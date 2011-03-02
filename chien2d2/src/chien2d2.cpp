@@ -895,6 +895,8 @@ bool C2D2_DesenhaSpriteSubpixel(unsigned int identificador, unsigned int indice,
 	vy[2]=vy[3] = y + sprites[idx].spAltura-2;
 	// Desenha o sprite com efeito
     C2D2_DesenhaSpriteEfeitoSubpixel(identificador, indice, vx, vy, 255, 255, 255, 255);
+
+	return true;
 }
 
 

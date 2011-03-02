@@ -28,6 +28,10 @@ Copyright 2008-2010, Paulo Vinicius Wolski Radtke (pvwradtke@gmail.com)
     #include <OpenGL/gl.h>	
     #include <OpenGL/glu.h>	
 #else
+	#if defined(WIN32)
+		#include <windows.h>
+	#endif
+
     #include <GL/gl.h>	
     #include <GL/glu.h>	
 #endif
