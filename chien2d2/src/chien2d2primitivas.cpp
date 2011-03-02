@@ -23,15 +23,20 @@ Copyright 2008-2010, Paulo Vinicius Wolski Radtke (pvwradtke@gmail.com)
 	#include <SDL.h>
 #endif
 
+// Includes OpenGL (multiplataforma)
+#if defined(__APPLE__) && defined(__MACH__)
+    #include <OpenGL/gl.h>	
+    #include <OpenGL/glu.h>	
+#else
+    #include <GL/gl.h>	
+    #include <GL/glu.h>	
+#endif
 
+#include <math.h>
 #include <stdlib.h>
 #include <c2d2/chien2d2.h>
 #include <c2d2/chien2d2primitivas.h>
-#include <c2d2/chien2d2primitivas_sdl.h>
-#include <c2d2/chien2d2primitivas_gl.h>
 
-// Variável que indica o tipo de renderer utilizado
-extern int render;
 
 // Função que inicia a biblioteca
 //
@@ -39,16 +44,7 @@ extern int render;
 //
 bool C2D2P_Inicia()
 {
-	switch(render)
-	{
-	case C2D2_DESENHO_OPENGL:
-		C2D2PGL_Inicia();
-		break;
-	case C2D2_DESENHO_PADRAO:
-		C2D2PSDL_Inicia();
 		return true;
-	}
-	return false;
 }
 
 
@@ -58,38 +54,81 @@ bool C2D2P_Inicia()
 //
 // Data: 28/03/2008
 //
-void (*C2D2P_Pontos)(C2D2P_Ponto pontos[], unsigned int nPontos, unsigned char r, unsigned char g, unsigned char b);
+void C2D2P_Pontos(C2D2P_Ponto pontos[], unsigned int nPontos, unsigned char r, unsigned char g, unsigned char b)
+{
+	setaTexturizacao(false);
+	glColor3ub(r, g, b);
+	glBegin(GL_POINTS);
+	for(unsigned int i=0;i<nPontos;i++)
+		glVertex2i((GLint)(pontos[i][0]),(GLint)(pontos[i][1]));
+	glEnd();
+}
 
-// Desenha uma linha vertical, a partir do ponto x,y, com altura alt e na cor indicada
-// Usada para desenhar rapidamente elementos pintados
-//
-// Data: 06/02/2008
-//
 // Algoritmo para desenhar uma linha reta, baseado em duas coordenadas no plano e uma cor em RGB
 // Usa o algoritmo do ponto médio.
 //
 // Data: 05/02/2008
 //
-void (*C2D2P_Linha)(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b);
+void C2D2P_Linha(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b)
+{
+	setaTexturizacao(false);
+	glColor3ub(r, g, b);
+	glBegin(GL_LINES);
+		glVertex2i((GLint)x1,(GLint)y1);
+		glVertex2i((GLint)x2,(GLint)y2);
+	glEnd();
+}
 
 // Algoritmo para desenhar um retângulo, baseado em duas coordenadas no plano e uma cor em RGB
 //
 // Data: 05/02/2008
 //
 
-void (*C2D2P_Retangulo)(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b);
+void C2D2P_Retangulo(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b)
+{
+	setaTexturizacao(false);
+	glColor3ub(r, g, b);
+	glBegin(GL_LINE_LOOP);
+		glVertex2i((GLint)x1,(GLint)y1);
+		glVertex2i((GLint)x2,(GLint)y1);
+		glVertex2i((GLint)x2,(GLint)y2);
+		glVertex2i((GLint)x1,(GLint)y2);
+	glEnd();
+}
 
 // Algoritmo para desenhar um retângulo pintado, baseado em duas coordenadas no plano e uma cor em RGB
 //
 // Data: 05/02/2008
 //
-void (*C2D2P_RetanguloPintado)(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b);
+void C2D2P_RetanguloPintado(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b)
+{
+	setaTexturizacao(false);
+	glColor3ub(r, g, b);
+	glBegin(GL_QUADS);
+		glVertex2i((GLint)x1,(GLint)y1);
+		glVertex2i((GLint)x2,(GLint)y1);
+		glVertex2i((GLint)x2,(GLint)y2);
+		glVertex2i((GLint)x1,(GLint)y2);
+	glEnd();
 
-// Algoritmo para desenhar um retângulo pintado, baseado em duas coordenadas no plano e uma cor em RGB
+}
+
+// Algoritmo para desenhar um retângulo pintado, baseado em duas coordenadas no plano, uma cor em RGB e o valor de alfa
 //
 // Data: 29/01/2011
 //
-void (*C2D2P_RetanguloPintadoAlfa)(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b, unsigned char alfa);
+void C2D2P_RetanguloPintadoAlfa(int x1,int y1,int x2,int y2,unsigned char r, unsigned char g, unsigned char b, unsigned char alfa)
+{
+	setaTexturizacao(false);
+	glColor4ub(r, g, b, alfa);
+	glBegin(GL_QUADS);
+		glVertex2i((GLint)x1,(GLint)y1);
+		glVertex2i((GLint)x2,(GLint)y1);
+		glVertex2i((GLint)x2,(GLint)y2);
+		glVertex2i((GLint)x1,(GLint)y2);
+	glEnd();
+
+}
 
 
 // Algoritmo para desenhar um círculo, baseado em uma coordenada no plano, o raio e uma cor em RGB
@@ -97,25 +136,122 @@ void (*C2D2P_RetanguloPintadoAlfa)(int x1,int y1,int x2,int y2,unsigned char r, 
 //
 // Data: 05/02/2008
 //
-void (*C2D2P_Circulo)(int xc,int yc, int raio, unsigned char r, unsigned char g, unsigned char b);
+
+void C2D2P_Circulo(int xc,int yc, int raio, unsigned char r, unsigned char g, unsigned char b)
+{
+	if(raio <= 0)
+		return;
+	double rad;
+	int x,y, inc=0;
+	inc = 500/raio;
+	if(inc > 30)
+		inc = 30;
+	else if(inc < 3)
+		inc = 3;
+	setaTexturizacao(false);
+	glColor3ub(r, g, b);
+	glBegin(GL_LINE_LOOP);
+	for (int ang=0; ang<360; ang+=inc)
+	{
+		rad = ang * (double)3.1415926535897932384626433832795 / 180.0;
+		x = xc + (int)(raio * cos(rad));
+		y = yc - (int)(raio * sin(rad));
+		glVertex2i(x,y);
+	}
+	glEnd();
+}
 
 // Algoritmo para desenhar um círculo pintado, baseado em uma coordenada no plano, o raio e uma cor em RGB
 // Baseado no algoritmo do círculo pelo ponto médio
 //
 // Data: 05/02/2008
 //
-void (*C2D2P_CirculoPintado)(int xc,int yc,int raio, unsigned char r, unsigned char g, unsigned char b);
+void C2D2P_CirculoPintado(int xc,int yc,int raio, unsigned char r, unsigned char g, unsigned char b)
+{
+	if(raio<=0)
+		return;
+	double rad;
+	int x,y, inc=0;
+	inc = 250/raio;
+	if(inc > 90)
+		inc = 90;
+	else if(inc < 3)
+		inc = 3;
+	setaTexturizacao(false);
+	glColor3ub(r, g, b);
+	glBegin(GL_POLYGON);
+	for (int ang=0; ang<360; ang+=inc)
+	{
+		rad = ang * (double)3.1415926535897932384626433832795 / 180.0;
+		x = xc + (int)(raio * cos(rad));
+		y = yc - (int)(raio * sin(rad));
+		glVertex2i(x,y);
+	}
+	glEnd();
+}
+
+
 
 // Algoritmo para desenhar uma elipse, baseado no centro da elipse, a relação "a" e "b", mais uma cor RGB
 // Usa o algoritmo do ponto médio
 //
 // Data: 06/02/2008
 //
-void (*C2D2P_Elipse)(int xc, int yc, int va, int vb, unsigned char r, unsigned char g, unsigned char b);
+void C2D2P_Elipse(int xc, int yc, int va, int vb, unsigned char r, unsigned char g, unsigned char b)
+{
+	if(va<=0 || vb <= 0)
+		return;
+	double rad;
+	int x,y, inc=0;
+	if(va > vb)
+		inc = 250/va;
+	else
+		inc = 250/vb;
+	if(inc > 90)
+		inc = 90;
+	else if(inc < 3)
+		inc = 3;
+	setaTexturizacao(false);
+	glColor3ub(r, g, b);
+	glBegin(GL_LINE_LOOP);
+	for(int ang = 0; ang < 360; ang += inc)
+	{
+		rad = ang * (double)3.1415926535897932384626433832795 / 180.0;
+		x = xc + (int)(va * cos(rad));
+		y = yc - (int)(vb * sin(rad));
+		glVertex2i(x,y);
+	}
+	glEnd();
+}
 
 // Algoritmo para desenhar uma elipse pintada, baseado no centro da elipse, a relação "a" e "b", mais uma cor RGB
 // Usa o algoritmo do ponto médio
 //
 // Data: 06/02/2008
 //
-void (*C2D2P_ElipsePintada)(int xc, int yc, int va, int vb, unsigned char r, unsigned char g, unsigned char b);
+void C2D2P_ElipsePintada(int xc, int yc, int va, int vb, unsigned char r, unsigned char g, unsigned char b)
+{
+	if(va<=0 || vb <= 0)
+		return;
+	double rad;
+	int x,y, inc=0;
+	if(va > vb)
+		inc = 250/va;
+	else
+		inc = 250/vb;
+	if(inc > 90)
+		inc = 90;
+	else if(inc < 3)
+		inc = 3;
+	setaTexturizacao(false);
+	glColor3ub(r, g, b);
+	glBegin(GL_POLYGON);
+	for(int ang = 0; ang < 360; ang += inc)
+	{
+		rad = ang * (double)3.1415926535897932384626433832795 / 180.0;
+		x = xc + (int)(va * cos(rad));
+		y = yc - (int)(vb * sin(rad));
+		glVertex2i(x,y);
+	}
+	glEnd();
+}

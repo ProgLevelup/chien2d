@@ -19,23 +19,6 @@ Copyright 2008-2010, Paulo Vinicius Wolski Radtke (pvwradtke@gmail.com)
 
 #include <c2d2/chien2d2.h>
 
-// indica se a Chien2D 2 já foi inicializada. Por default, não foi ainda.
-extern bool inicializado;
-// A tela principal
-extern SDL_Surface *screen;
-// O vetor com os sprite sets
-extern C2D2_SpriteSet sprites[C2D2_MAX_SPRITESET];
-// Finalmente, o vetor com as fontes
-extern C2D2_Fonte fontes[C2D2_MAX_FONTES];
-// Indica se o sistema está em shutdown ou não
-extern bool c_shutdown;
-// O vetor de teclas utilizadas
-extern C2D2_Botao teclas[C2D2_MAXTECLAS];
-// O mouse do sistema
-extern C2D2_Mouse mouse;
-
-
-
 // Atenção desenvolvedor: não utilize as seguintes funções, limitadas a uso interno!
 // Função para zerar os dados da Chien2D 2
 void reset();

@@ -222,17 +222,13 @@ bool C2D2_Inicia(unsigned int largura, unsigned int altura, int modoVideo, int t
 // função que indica as dimensões da tela
 bool C2D2_DimensoesTela(int *largura, int *altura);
 // Função que encerra a Chien2D 2
-extern void (*C2D2_Encerra)();
+void C2D2_Encerra();
 // Função para sincronizar o vídeo a n fps
-extern void (*C2D2_Sincroniza)(Uint8 fps);
+void C2D2_Sincroniza(Uint8 fps);
 // Função para limpar a tela
-extern void (*C2D2_LimpaTela)();
+void C2D2_LimpaTela();
 // Função para escolher a cor de limpeza da tela
-extern void (*C2D2_TrocaCorLimpezaTela)(Uint8 r, Uint8 g, Uint8 b);
-// Função para limitar a área de desenho da tela
-extern void (*C2D2_LimitaAreaDesenho)(int x, int y, int largura, int altura);
-// Função para eliminar o limite da área de desenho
-extern void (*C2D2_LiberaAreaDesenho)();
+void C2D2_TrocaCorLimpezaTela(Uint8 r, Uint8 g, Uint8 b);
 // Função para recuperar o tempo do sistema
 unsigned long C2D2_TempoSistema();
 
@@ -240,16 +236,23 @@ unsigned long C2D2_TempoSistema();
 // Funções para manipular sprites
 
 // função para carregar um sprite set na memória
-extern unsigned int (*C2D2_CarregaSpriteSet)(const char *arquivo, int largura, int altura);
+unsigned int C2D2_CarregaSpriteSet(const char *arquivo, int largura, int altura);
 // Remove um sprite set da memória
-extern void (*C2D2_RemoveSpriteSet)(unsigned int id);
+void C2D2_RemoveSpriteSet(unsigned int id);
 // Função para desenhar um sprite
-extern bool (*C2D2_DesenhaSprite)(unsigned int identificador, unsigned int indice, int x, int y);
+bool C2D2_DesenhaSprite(unsigned int identificador, unsigned int indice, int x, int y);
+// Função para desenhar um sprite em precisão subpixel (demonstração apenas, não funciona bem)
+bool C2D2_DesenhaSpriteF(unsigned int identificador, unsigned int indice, float x, float y);
 // Função para desenhar um sprite distorcido e com efeitos de cor/alpha
-extern bool (*C2D2_DesenhaSpriteEfeito)(unsigned int identificador, unsigned int indice, int x[4], int y[4], Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+bool C2D2_DesenhaSpriteEfeito(unsigned int identificador, unsigned int indice, int x[4], int y[4], Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 //Desenha um sprite centralizado nas coordenadas xcentro e ycentro, com dimensoes largura e altura
-extern bool (*C2D2_DesenhaSpriteCentro)(unsigned int id, unsigned int indice, double xcentro, double ycentro, int largura, int altura);
-extern bool (*C2D2_DesenhaSpriteCentroAlfa)(unsigned int id, unsigned int indice, double xcentro, double ycentro, int largura, int altura, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+bool C2D2_DesenhaSpriteCentro(unsigned int id, unsigned int indice, double xcentro, double ycentro, int largura, int altura);
+bool C2D2_DesenhaSpriteCentroAlfa(unsigned int id, unsigned int indice, double xcentro, double ycentro, int largura, int altura, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+// Função para desenhar um sprite distorcido e com efeitos de cor/alpha em resolução subpixel
+bool C2D2_DesenhaSpriteEfeitoSubpixel(unsigned int identificador, unsigned int indice, float x[4], float y[4], Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+// Função para desenhar um sprite com resolução subpixel
+bool C2D2_DesenhaSpriteSubpixel(unsigned int identificador, unsigned int indice, float x, float y);
+
 
 // Funções comuns de sprites
 // Procura um spriteset pelo nome do arquivo original
@@ -305,5 +308,17 @@ bool C2D2_LigaJoystick(int index);
 void C2D2_DesligaJoystick(int index);
 
 C2D2_Joystick *C2D2_PegaJoystick(int index);
+
+// funções específicas para a OpenGL
+// Protótipos de funções internas da versão Open GL
+inline void resetaGL();
+inline void alteraBlend(bool estado);
+void setaTexturizacao(bool estado);
+inline void modoBlend(GLenum fatorOrigem, GLenum fatorDestino);
+inline void setaTextura(GLuint textura);
+inline void modoWrapTextura(GLenum wrapTexturaS, GLenum wraptTexturaT);
+inline void modoFiltragem(GLenum filtroMax, GLenum filtroMin);
+void MagentaParaPontoTransparente(SDL_Surface *surface);
+
 
 #endif

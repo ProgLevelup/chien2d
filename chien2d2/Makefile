@@ -7,12 +7,8 @@ OBJ = ./obj/
 
 comp = g++ -g -O3 -c -I $(INC)
 
-objc2d2f = $(OBJ)chien2d2.o $(OBJ)chien2d2_sdl.o $(OBJ)chien2d2_gl.o \
-	$(OBJ)chien2d2primitivas.o $(OBJ)chien2d2primitivas_sdl.o \
-	$(OBJ)chien2d2primitivas_gl.o
-objc2d2 = chien2d2.o chien2d2_sdl.o chien2d2_gl.o \
-	chien2d2primitivas.o chien2d2primitivas_sdl.o \
-	chien2d2primitivas_gl.o
+objc2d2f = $(OBJ)chien2d2.o $(OBJ)chien2d2primitivas.o 
+objc2d2 = chien2d2.o chien2d2primitivas.o
 objca2f = $(OBJ)chienaudio2.o
 objca2 = chienaudio2.o
 objcm2f = $(OBJ)chien2d2mapa.o
@@ -43,16 +39,8 @@ libc2d2lua: $(objc2d2lua)
 
 chien2d2.o : 
 	$(comp) $(SRC)chien2d2.cpp -o $(OBJ)chien2d2.o
-chien2d2_sdl.o : 
-	$(comp) $(SRC)chien2d2_sdl.cpp -o $(OBJ)chien2d2_sdl.o
-chien2d2_gl.o : 
-	$(comp) $(SRC)chien2d2_gl.cpp -o $(OBJ)chien2d2_gl.o
 chien2d2primitivas.o : 
 	$(comp) $(SRC)chien2d2primitivas.cpp -o $(OBJ)chien2d2primitivas.o
-chien2d2primitivas_sdl.o : 
-	$(comp) $(SRC)chien2d2primitivas_sdl.cpp -o $(OBJ)chien2d2primitivas_sdl.o
-chien2d2primitivas_gl.o : 
-	$(comp) $(SRC)chien2d2primitivas_gl.cpp -o $(OBJ)chien2d2primitivas_gl.o
 chienaudio2.o :
 	$(comp) $(SRC)chienaudio2.cpp -o $(OBJ)chienaudio2.o
 chien2d2mapa.o :
@@ -74,4 +62,4 @@ uninstall:
 clean:
 	rm -rf $(OBJ) $(LIB)
 mkd:
-	mkdir $(OBJ) ; mkdir $(LIB)
+	mkdir -p $(OBJ) ; mkdir -p $(LIB)
