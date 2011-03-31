@@ -71,3 +71,4 @@ glob:Exemplos/10-subpixel/Debug/
 glob:Exemplos/10-subpixel/Release/
 glob:scripts/Chien2d_libs.exe
 glob:scripts/Chien2d_samples_bin.exe
+glob:Exemplos/dados/audio/.DS_Store
