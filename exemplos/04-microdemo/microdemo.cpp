@@ -26,7 +26,7 @@ int main(int narg, char **valarg)
 	// Deixa os números aleatórios a cada vez que o programa roda
 	srand(time_t(0));
 	// Inicia a Chien2D 2 e testa se deu tudo certo
-	if(C2D2_Inicia(800, 600, C2D2_TELA_CHEIA, C2D2_DESENHO_PADRAO, "Microdemo"))
+	if(C2D2_Inicia(800, 600, C2D2_JANELA, C2D2_DESENHO_PADRAO, "Microdemo"))
 		printf("Iniciou a Chien2D 2 com sucesso\n");
 	else
 	{
@@ -41,17 +41,17 @@ int main(int narg, char **valarg)
 	else
 		printf("Nao foi possivel iniciar o sistema de audio. Vai rodar sem som e musicas :( ...\n");
 	// Cria o personagem do jogo
-	unsigned int spDark = C2D2_CarregaSpriteSet("darkphoenix.png", 32, 42);
+	unsigned int spDark = C2D2_CarregaSpriteSet("graficos/darkphoenix.png", 32, 42);
 	// Carrega a fonte principal
-	unsigned int fonte = C2D2_CarregaFonte("isabelle64.png", 64);
+	unsigned int fonte = C2D2_CarregaFonte("fontes/isabelle64.png", 64);
 	// Carrega a fonte secundária (usada no final)
-	unsigned int fonte2 = C2D2_CarregaFonte("arial32.png", 32);
+	unsigned int fonte2 = C2D2_CarregaFonte("fontes/arial32.png", 32);
 	// Carrega a música
-	unsigned int mfundo = CA2_CarregaMusica("Phenomena_Firefox&Tip.s3m");
+	unsigned int mfundo = CA2_CarregaMusica("audio/Phenomena_Firefox&Tip.s3m");
 	// Carrega o efeito sonoro da batida
-	unsigned int batida = CA2_CarregaEfeito("bate.ogg");
+	unsigned int batida = CA2_CarregaEfeito("audio/bate.ogg");
 	// Carrega o efeito sonoro da pegada
-	unsigned int pegada = CA2_CarregaEfeito("pegada.ogg");
+	unsigned int pegada = CA2_CarregaEfeito("audio/pegada.ogg");
 
 	// Recupera o teclado
 	C2D2_Botao *teclas = C2D2_PegaTeclas();

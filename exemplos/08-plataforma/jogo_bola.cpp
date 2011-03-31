@@ -19,7 +19,7 @@ Animacao animBola[] ={
 //
 bool JOGO_CarregaBola()
 {
-	return ATOR_CarregaAtorEstatico(BOLA, "imagens/inimigobola.png", 28, 28, 0, 0,
+	return ATOR_CarregaAtorEstatico(BOLA, "graficos/inimigobola.png", 28, 28, 0, 0,
 		28, 28, animBola, false, 0, 0, &AtualizaBola);
 }
 

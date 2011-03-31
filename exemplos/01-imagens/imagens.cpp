@@ -30,9 +30,9 @@ int main(int narg, char **valarg)
 		return 0;
 	}
 	// Cria o personagem do jogo
-	unsigned int spDark = C2D2_CarregaSpriteSet("darkphoenix.png", 32, 42);
+	unsigned int spDark = C2D2_CarregaSpriteSet("graficos/darkphoenix.png", 32, 42);
 	// Carrega a imagem
-	unsigned int fundo = C2D2_CarregaSpriteSet("imagem.jpg", 0,0);
+	unsigned int fundo = C2D2_CarregaSpriteSet("graficos/imagem.jpg", 0,0);
 
 	// Limpa a tela com a cor de fundo atual
 	C2D2_LimpaTela();

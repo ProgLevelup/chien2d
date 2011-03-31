@@ -30,11 +30,11 @@ int main(int narg, char **valarg)
 		return 0;
 	}
 	// Cria o personagem do jogo
-	unsigned int spDark = C2D2_CarregaSpriteSet("darkphoenix.png", 32, 42);
+	unsigned int spDark = C2D2_CarregaSpriteSet("graficos/darkphoenix.png", 32, 42);
 	// Carrega a imagem
-	unsigned int fundo = C2D2_CarregaSpriteSet("imagem.jpg", 0,0);
+	unsigned int fundo = C2D2_CarregaSpriteSet("graficos/imagem.jpg", 0,0);
 	// Carrega a fonte
-	unsigned int fonte = C2D2_CarregaFonte("isabelle64.png", 64);
+	unsigned int fonte = C2D2_CarregaFonte("fontes/isabelle64.png", 64);
 
 	// Recupera o teclado
 	C2D2_Botao *teclas = C2D2_PegaTeclas();

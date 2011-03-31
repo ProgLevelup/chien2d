@@ -74,7 +74,7 @@ void ProcessaControle(Ator *a)
 int main(int narg, char **valarg)
 {
 	// Inicia a Chien2D 2 e testa se deu tudo certo
-	if(C2D2_Inicia(LARGURA_TELA, ALTURA_TELA, C2D2_TELA_CHEIA, C2D2_DESENHO_PADRAO, "Mapa Top View"))
+	if(C2D2_Inicia(LARGURA_TELA, ALTURA_TELA, C2D2_JANELA, C2D2_DESENHO_PADRAO, "Mapa Top View"))
 		printf("Iniciou a Chien2D 2 com sucesso\n");
 	else
 	{
@@ -88,9 +88,9 @@ int main(int narg, char **valarg)
 	// Inicia os personagens
 	ATOR_Inicia();
 	// Carrega a fonte do sistema
-	unsigned int arial32 = C2D2_CarregaFonte("arial32.png", 32);
+	unsigned int arial32 = C2D2_CarregaFonte("fontes/arial32_pink2.png", 32);
 	// Carrega o mapa
-	unsigned int mapa = C2D2M_CarregaMapaMappy("arenainclinada.FMP","arena.png");
+	unsigned int mapa = C2D2M_CarregaMapaMappy("fases/arenainclinada.FMP","graficos/arena.png");
 	bool cAtriz = JOGO_CarregaAtriz();
 	// Testa se carregou certo (se é diferente de 0)
 	if(!cAtriz || arial32==0 || mapa == 0)

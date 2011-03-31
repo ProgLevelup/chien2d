@@ -48,9 +48,9 @@ int main(int narg, char **valarg)
 	// Inicia as primitivas para limpar a área suja
 	C2D2P_Inicia();
 	// Carrega a imagem
-	unsigned int mapa = C2D2M_CarregaMapaMappy("tilemap.fmp", "tileset.png");
-	unsigned int idSprite = C2D2_CarregaSpriteSet("darkphoenix.png", 32, 42);
-	unsigned int arial32 = C2D2_CarregaFonte("arial32.png", 32);
+	unsigned int mapa = C2D2M_CarregaMapaMappy("fases/tilemap.fmp", "graficos/tileset.png");
+	unsigned int idSprite = C2D2_CarregaSpriteSet("graficos/darkphoenix.png", 32, 42);
+	unsigned int arial32 = C2D2_CarregaFonte("fontes/arial32_pink.png", 32);
 	// Testa se carregou certo (se é diferente de 0)
 	if(mapa == 0 || idSprite==0 || arial32==0)
 	{

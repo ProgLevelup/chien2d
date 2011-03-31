@@ -54,7 +54,7 @@ void BALOES_TelaCreditos();
 bool BALOES_CarregaRecursos()
 {
     // Carrega a fonte tamanho 32. Para cada recurso carregado, testamos se ele foi carregado corretamente
-    fonte32 = C2D2_CarregaFonte("./graficos/arial32.png", 32);
+    fonte32 = C2D2_CarregaFonte("./fontes/arial32.png", 32);
     if(fonte32==0)
     {
         printf("Falhou carregar a fonte de tamanho 32.\n");
@@ -66,7 +66,7 @@ bool BALOES_CarregaRecursos()
     C2D2_DesenhaTexto(fonte32, 400, 284, "Carregando. Por favor, aguarde.", C2D2_TEXTO_CENTRALIZADO);
     C2D2_Sincroniza(C2D2_FPS_PADRAO);
     // Continua carregando os recursos
-    fonte64 = C2D2_CarregaFonte("./graficos/isabelle64.png", 64);
+    fonte64 = C2D2_CarregaFonte("./fontes/isabelle64.png", 64);
     if(fonte64==0)
     {
         printf("Falhou carregar a fonte de tamanho 64.\n");        
@@ -108,7 +108,7 @@ bool BALOES_CarregaRecursos()
         printf("Falhou carregar o sprite do balão.\n");        
         return false;
     }
-    titulo = C2D2_CarregaSpriteSet("./graficos/titulo.png", 0, 0);
+    titulo = C2D2_CarregaSpriteSet("./graficos/titulo_baloes.png", 0, 0);
     if(spbalao==0)
     {
         printf("Falhou carregar a tela de título.\n");        

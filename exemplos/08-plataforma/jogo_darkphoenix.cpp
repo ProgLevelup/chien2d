@@ -41,7 +41,7 @@ char *sons[]={
 //
 bool JOGO_CarregaDarkPhoenix()
 {
-	return ATOR_CarregaAtorEstatico(DARKPHOENIX, "imagens/darkphoenix.png", 32, 42, 4, 2,
+	return ATOR_CarregaAtorEstatico(DARKPHOENIX, "graficos/darkphoenix.png", 32, 42, 4, 2,
 		24, 39, animDark, false, sons, 3, &AtualizaDarkPhoenix);
 }
 

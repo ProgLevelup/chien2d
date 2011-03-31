@@ -87,7 +87,7 @@ int main(int narg, char **valarg)
 	// Inicia os personagens
 	ATOR_Inicia();
 	// Carrega a fonte do sistema
-	unsigned int fonte = C2D2_CarregaFonte("imagens/isabelle64_alpha.png", 64);
+	unsigned int fonte = C2D2_CarregaFonte("fontes/isabelle64_alpha.png", 64);
 	// Carrega o mapa
 	unsigned int mapa = C2D2M_CarregaMapaMappy("fases/Aula04-Mapa.FMP", "fases/Aula04-tileset.png");
 	// Dá as velocidades. As duas últimas devem ser 1. As demais, incrementa de 1 em 1

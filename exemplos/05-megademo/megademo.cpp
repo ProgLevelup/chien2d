@@ -65,21 +65,21 @@ bool Carrega()
 {
 	int carga=0;
 	BarraCarregamento(carga, NUM_RECURSOS);
-	mfundo = CA2_CarregaMusica("./dados/2nd_PurpleMotion.s3m");
+	mfundo = CA2_CarregaMusica("./audio/2nd_PurpleMotion.s3m");
 	BarraCarregamento(++carga, NUM_RECURSOS);
-	fdigital = C2D2_CarregaFonte("./dados/digital.png", 16);
+	fdigital = C2D2_CarregaFonte("./fontes/digital.png", 16);
 	BarraCarregamento(++carga, NUM_RECURSOS);
-	fsistema = C2D2_CarregaFonte("./dados/isabelle64.png", 64);
+	fsistema = C2D2_CarregaFonte("./fontes/isabelle64.png", 64);
 	BarraCarregamento(++carga, NUM_RECURSOS);
-	fpequeno = C2D2_CarregaFonte("./dados/arial32.png", 32);
+	fpequeno = C2D2_CarregaFonte("./fontes/arial32.png", 32);
 	BarraCarregamento(++carga, NUM_RECURSOS);
-	tuxwindows = C2D2_CarregaSpriteSet("./dados/tuxwindows.jpg", 0, 0);
+	tuxwindows = C2D2_CarregaSpriteSet("./graficos/tuxwindows.jpg", 0, 0);
 	BarraCarregamento(++carga, NUM_RECURSOS);
-	titulo = C2D2_CarregaSpriteSet("./dados/titulo.png", 0, 0);
+	titulo = C2D2_CarregaSpriteSet("./graficos/titulo.png", 0, 0);
 	BarraCarregamento(++carga, NUM_RECURSOS);
-	sprite1 = C2D2_CarregaSpriteSet("./dados/atriz.png", 32, 64);
+	sprite1 = C2D2_CarregaSpriteSet("./graficos/atriz.png", 32, 64);
 	BarraCarregamento(++carga, NUM_RECURSOS);
-	sprite2 = C2D2_CarregaSpriteSet("./dados/estrela.png", 256, 256);
+	sprite2 = C2D2_CarregaSpriteSet("./graficos/estrela.png", 256, 256);
 	BarraCarregamento(++carga, NUM_RECURSOS);
 
 	return true;
@@ -525,7 +525,7 @@ void Creditos()
 
 int main(int ac, char **av)
 {
-	if(!C2D2_Inicia(800, 600, C2D2_TELA_CHEIA, C2D2_DESENHO_OPENGL, "Chien 2D v2.0 Megademo"))
+	if(!C2D2_Inicia(800, 600, C2D2_JANELA, C2D2_DESENHO_OPENGL, "Chien 2D v2.0 Megademo"))
 	{
 		printf("Nao conseguiu iniciar a tela. Encerrando.\n");
 		return 1;

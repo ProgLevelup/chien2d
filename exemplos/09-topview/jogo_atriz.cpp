@@ -51,7 +51,7 @@ Animacao animAtriz[] ={
 //
 bool JOGO_CarregaAtriz()
 {
-	return ATOR_CarregaAtorEstatico(JOGO_ATRIZ, "atriz.png", 32, 64, 10, 51, 14, 11, 
+	return ATOR_CarregaAtorEstatico(JOGO_ATRIZ, "graficos/atriz.png", 32, 64, 10, 51, 14, 11, 
 		animAtriz, false, 0, 0, &AtualizaAtriz);
 }
 

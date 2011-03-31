@@ -51,21 +51,21 @@ int main(int narg, char **valarg)
 	for(int i=0;i<4;i++)
 	{
 	    char nome[40];
-	    sprintf(nome, "rotacao%i.png", i);
+	    sprintf(nome, "graficos/rotacao%i.png", i);
 	    spritescertos[i]= C2D2_CarregaSpriteSet(nome, TAMSPRITE+2, TAMSPRITE+2);    
     	xf[0+i*4] = xf[3+i*4] = -TAMSPRITE + TAMSPRITE*(i%2);
         xf[1+i*4] = xf[2+i*4] = (i%2)*TAMSPRITE;
     	yf[0+i*4] = yf[1+i*4] = (TAMSPRITE - (i/2)*TAMSPRITE); 
     	yf[2+i*4] = yf[3+i*4] = -(i/2)*TAMSPRITE;  
         // Faz o mesmo para os sprites errados
-   	    sprintf(nome, "rotacaoerrado%i.png", i);
+   	    sprintf(nome, "graficos/rotacaoerrado%i.png", i);
 	    spriteserrados[i]= C2D2_CarregaSpriteSet(nome, TAMSPRITE, TAMSPRITE);    
     	xi[0+i*4] = xi[3+i*4] = -TAMSPRITE + TAMSPRITE*(i%2);
         xi[1+i*4] = xi[2+i*4] = (i%2)*TAMSPRITE;
     	yi[0+i*4] = yi[1+i*4] = (TAMSPRITE - (i/2)*TAMSPRITE); 
     	yi[2+i*4] = yi[3+i*4] = -(i/2)*TAMSPRITE;  
 	}
-	help = C2D2_CarregaSpriteSet("help.png", 0, 0);
+	help = C2D2_CarregaSpriteSet("graficos/help.png", 0, 0);
 	// Recupera o teclado
 	C2D2_Botao *teclas = C2D2_PegaTeclas();
 	// Recupera o mouse

@@ -34,9 +34,9 @@ int main(int narg, char **valarg)
 		return 0;
 	}
 	// Cria o cenário
-	unsigned int fundo = C2D2_CarregaSpriteSet("scrollmaiscorreto.png", 512, 512);
-	unsigned int fundoerrado = C2D2_CarregaSpriteSet("scrollerrado.png", 510, 510);
-	unsigned int help = C2D2_CarregaSpriteSet("help.png", 0, 0);			
+	unsigned int fundo = C2D2_CarregaSpriteSet("graficos/scrollmaiscorreto.png", 512, 512);
+	unsigned int fundoerrado = C2D2_CarregaSpriteSet("graficos/scrollerrado.png", 510, 510);
+	unsigned int help = C2D2_CarregaSpriteSet("graficos/help.png", 0, 0);			
 	// Desenha o cenário certo?
 	bool certo = false;
 
