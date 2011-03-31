@@ -89,7 +89,7 @@ int main(int narg, char **valarg)
 	// Carrega a fonte do sistema
 	unsigned int fonte = C2D2_CarregaFonte("fontes/isabelle64_alpha.png", 64);
 	// Carrega o mapa
-	unsigned int mapa = C2D2M_CarregaMapaMappy("fases/Aula04-Mapa.FMP", "fases/Aula04-tileset.png");
+	unsigned int mapa = C2D2M_CarregaMapaMappy("fases/Aula04-Mapa.FMP", "graficos/Aula04-tileset.png");
 	// Dá as velocidades. As duas últimas devem ser 1. As demais, incrementa de 1 em 1
 	int numcamadas = 4;
 	C2D2M_VelocidadeCamadaMapa(mapa, numcamadas-1, 1);

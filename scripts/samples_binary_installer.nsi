@@ -25,6 +25,8 @@ Section "" ;No components page, name is not important
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
   
+  ;The files are listed one by one to easily detect files change
+  
   ; Put file there
   File "..\Exemplos\Release\01-imagens.exe"
   File "..\Exemplos\Release\02-loopjogo.exe"
@@ -35,77 +37,86 @@ Section "" ;No components page, name is not important
   File "..\Exemplos\Release\07-tilemap.exe"
   File "..\Exemplos\Release\08-plataforma.exe"
   File "..\Exemplos\Release\09-topview.exe"
-  File "..\Exemplos\Release\10-subpixel.exe"  
+  File "..\Exemplos\Release\10-subpixel.exe"     
   
-  File "..\Exemplos\01-imagens\darkphoenix.png"
-  File "..\Exemplos\01-imagens\darkphoenix_alpha.png"
-  File "..\Exemplos\01-imagens\imagem.jpg"
+  SetOutPath $INSTDIR\graficos
   
-  File "..\Exemplos\02-loopjogo\isabelle64.png"
+  File "..\Exemplos\dados\graficos\arena.png"
+  File "..\Exemplos\dados\graficos\atriz.png"
+  File "..\Exemplos\dados\graficos\atriz_alpha.png"
+  File "..\Exemplos\dados\graficos\balao.png"
+  File "..\Exemplos\dados\graficos\botao_creditos.png"
+  File "..\Exemplos\dados\graficos\botao_jogar.png"
+  File "..\Exemplos\dados\graficos\botao_sair.png"
+  File "..\Exemplos\dados\graficos\botao_voltar.png"
+  File "..\Exemplos\dados\graficos\darkphoenix.png"
+  File "..\Exemplos\dados\graficos\darkphoenix_alpha _white.png"
+  File "..\Exemplos\dados\graficos\darkphoenix_alpha.png"
+  File "..\Exemplos\dados\graficos\darkphoenix_alpha2.png"
+  File "..\Exemplos\dados\graficos\darkphoenix_alpha3.png"
+  File "..\Exemplos\dados\graficos\estrela.png"
+  File "..\Exemplos\dados\graficos\help.png"
+  File "..\Exemplos\dados\graficos\help.xcf"  
+  File "..\Exemplos\dados\graficos\imagem.jpg"
+  File "..\Exemplos\dados\graficos\inimigo.png"
+  File "..\Exemplos\dados\graficos\inimigobola.png"
+  File "..\Exemplos\dados\graficos\mira.png"
+  File "..\Exemplos\dados\graficos\rotacao0.png"  
+  File "..\Exemplos\dados\graficos\rotacao1.png"
+  File "..\Exemplos\dados\graficos\rotacao2.png"
+  File "..\Exemplos\dados\graficos\rotacao3.png"
+  File "..\Exemplos\dados\graficos\rotacaoerrado.png"
+  File "..\Exemplos\dados\graficos\rotacaoerrado0.png"
+  File "..\Exemplos\dados\graficos\rotacaoerrado1.png"
+  File "..\Exemplos\dados\graficos\rotacaoerrado2.png"
+  File "..\Exemplos\dados\graficos\rotacaoerrado3.png"
+  File "..\Exemplos\dados\graficos\scrollerrado.png"
+  File "..\Exemplos\dados\graficos\scrollmaiscorreto.png"
+  File "..\Exemplos\dados\graficos\tileset.png"
+  File "..\Exemplos\dados\graficos\titulo.png"
+  File "..\Exemplos\dados\graficos\titulo_baloes.png"
+  File "..\Exemplos\dados\graficos\tuxwindows.jpg"  
+  File "..\Exemplos\dados\graficos\Aula04-tileset.png"
+  File "..\Exemplos\dados\graficos\fundo.jpg"
+  File "..\Exemplos\dados\graficos\plataforma_camadas.png"
+  File "..\Exemplos\dados\graficos\plataforma_camadas_alpha.png"
+  File "..\Exemplos\dados\graficos\plataforma_camadas_alpha2.png"
   
-  File "..\Exemplos\04-microdemo\arial32.png"
+  SetOutPath $INSTDIR\fontes
   
-  SetOutPath $INSTDIR\dados
-  
-  File "..\Exemplos\05-megademo\dados\2nd_PurpleMotion.s3m"
-  File "..\Exemplos\05-megademo\dados\arial32.png"
-  File "..\Exemplos\05-megademo\dados\atriz.png" 
-  File "..\Exemplos\05-megademo\dados\digital.png" 
-  File "..\Exemplos\05-megademo\dados\digital_solido.png" 
-  File "..\Exemplos\05-megademo\dados\estrela.png"
-  File "..\Exemplos\05-megademo\dados\isabelle64.png" 
-  File "..\Exemplos\05-megademo\dados\titulo.png" 
-  File "..\Exemplos\05-megademo\dados\tuxwindows.jpg"  
-  
-  SetOutPath $INSTDIR\graficos 
-  
-  File "..\Exemplos\06-baloes\graficos\arial32.png"
-  File "..\Exemplos\06-baloes\graficos\balao.png"
-  File "..\Exemplos\06-baloes\graficos\botao_creditos.png"
-  File "..\Exemplos\06-baloes\graficos\botao_jogar.png"
-  File "..\Exemplos\06-baloes\graficos\botao_sair.png"
-  File "..\Exemplos\06-baloes\graficos\botao_voltar.png"
-  File "..\Exemplos\06-baloes\graficos\isabelle64.png"
-  File "..\Exemplos\06-baloes\graficos\mira.png"
-  File "..\Exemplos\06-baloes\graficos\titulo.png"
-  
-  SetOutPath $INSTDIR
-  
-  File "..\Exemplos\07-tilemap\tileset.png"
-  
-  SetOutPath $INSTDIR\audio
-  
-  File "..\Exemplos\08-plataforma\audio\AulaPaulo_byPiovezan.it"
-  File "..\Exemplos\08-plataforma\audio\bate.wav"
-  File "..\Exemplos\08-plataforma\audio\morreu.wav"
-  File "..\Exemplos\08-plataforma\audio\pula.wav"
-  File "..\Exemplos\08-plataforma\audio\venceu.wav"
+  File "..\Exemplos\dados\fontes\arial32.png"
+  File "..\Exemplos\dados\fontes\arial32_pink.png"
+  File "..\Exemplos\dados\fontes\arial32_pink2.png"
+  File "..\Exemplos\dados\fontes\digital.png"
+  File "..\Exemplos\dados\fontes\digital_solido.png"  
+  File "..\Exemplos\dados\fontes\isabelle64.png"
+  File "..\Exemplos\dados\fontes\isabelle64_alpha.png"
+  File "..\Exemplos\dados\fontes\isabelle64_alpha2.png"
+  File "..\Exemplos\dados\fontes\Untitled.bmp"
   
   SetOutPath $INSTDIR\fases
   
-  File "..\Exemplos\08-plataforma\fases\Aula04-Mapa.BAK"
-  File "..\Exemplos\08-plataforma\fases\Aula04-Mapa.FMP"
-  File "..\Exemplos\08-plataforma\fases\Aula04-Mapa2.BAK"
-  File "..\Exemplos\08-plataforma\fases\Aula04-Mapa2.FMP"
-  File "..\Exemplos\08-plataforma\fases\Aula04-tileset.png"
-  File "..\Exemplos\08-plataforma\fases\fase1.BAK"
-  File "..\Exemplos\08-plataforma\fases\fase1.FMP"
-  File "..\Exemplos\08-plataforma\fases\fundo.jpg"
-  File "..\Exemplos\08-plataforma\fases\plataforma_camadas.png"
-  File "..\Exemplos\08-plataforma\fases\plataforma_camadas_alpha.png"
-  File "..\Exemplos\08-plataforma\fases\plataforma_camadas_alpha2.png"
+  File "..\Exemplos\dados\fases\arena.fmp"
+  File "..\Exemplos\dados\fases\arenainclinada.FMP"
+  File "..\Exemplos\dados\fases\Aula04-Mapa.FMP"
+  File "..\Exemplos\dados\fases\Aula04-Mapa2.FMP"
+  File "..\Exemplos\dados\fases\fase1.FMP"
+  File "..\Exemplos\dados\fases\tilemap.FMP"    
   
-  SetOutPath $INSTDIR\imagens
+  SetOutPath $INSTDIR\audio
   
-  File "..\Exemplos\08-plataforma\imagens\*.*"
+  File "..\Exemplos\dados\audio\2nd_PurpleMotion.s3m"
+  File "..\Exemplos\dados\audio\AulaPaulo_byPiovezan.it"
+  File "..\Exemplos\dados\audio\bate.ogg"
+  File "..\Exemplos\dados\audio\bate.wav"
+  File "..\Exemplos\dados\audio\morreu.wav"
+  File "..\Exemplos\dados\audio\pegada.ogg"
+  File "..\Exemplos\dados\audio\Phenomena_Firefox&Tip.s3m"
+  File "..\Exemplos\dados\audio\pula.wav"
+  File "..\Exemplos\dados\audio\screendoorclose.wav"  
+  File "..\Exemplos\dados\audio\venceu.wav"  
   
-  SetOutPath $INSTDIR
-  
-  File "..\Exemplos\09-topview\arena.fmp"
-  File "..\Exemplos\09-topview\arena.png"
-  File "..\Exemplos\09-topview\arenainclinada.FMP"
-  
-  File "..\Exemplos\10-subpixel\*.png"
+  SetOutPath $INSTDIR\
                                     
   File "..\Dependencias\SDL\lib\SDL.dll"
   File "..\Dependencias\SDL_image\lib\SDL_image.dll"
